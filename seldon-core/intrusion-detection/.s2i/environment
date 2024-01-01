@@ -1,0 +1,11 @@
+MODEL_NAME=AnomalyDetectionModel
+API_TYPE=REST
+SERVICE_TYPE=MODEL
+PERSISTENCE=0
+NUMBA_CACHE_DIR=/tmp/numba_cache
+TRANSFORMERS_CACHE=/tmp/transformers_cache
+
+// Guvicorn settings
+// Take a look at this tutorial https://github.com/SeldonIO/seldon-core/blob/master/python/seldon_core/microservice.py
+WORKERS=2
+DEBUG=True

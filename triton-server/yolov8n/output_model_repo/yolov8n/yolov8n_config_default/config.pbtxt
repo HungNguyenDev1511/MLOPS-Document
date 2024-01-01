@@ -1,0 +1,19 @@
+name: "yolov8n_config_default"
+max_batch_size: 8
+input {
+  name: "images"
+  data_type: TYPE_FP32
+  dims: 3
+  dims: 640
+  dims: 640
+}
+output {
+  name: "output0"
+  data_type: TYPE_FP32
+  dims: -1
+  dims: -1
+}
+instance_group {
+  kind: KIND_GPU
+}
+backend: "onnxruntime"

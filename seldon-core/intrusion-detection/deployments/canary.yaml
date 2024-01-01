@@ -1,0 +1,41 @@
+apiVersion: machinelearning.seldon.io/v1alpha2
+kind: SeldonDeployment
+metadata:
+  labels:
+    app: seldon
+  name: intrusion
+spec:
+  name: intrusion-canary
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - image: fullstackdatascience/intrusion_detection:0.10
+          imagePullPolicy: Always
+          name: detector
+        terminationGracePeriodSeconds: 1
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: detector
+      type: MODEL
+    name: main
+    replicas: 1
+    traffic: 75
+  - componentSpecs:
+    - spec:
+        containers:
+        - image: fullstackdatascience/intrusion_detection:0.11
+          imagePullPolicy: Always
+          name: detector
+        terminationGracePeriodSeconds: 1
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: detector
+      type: MODEL
+    name: canary
+    replicas: 1
+    traffic: 25

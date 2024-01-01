@@ -1,0 +1,20 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "sklearn-iris-kf-user"
+  namespace: kubeflow-user
+spec:
+  predictor:
+    sklearn:
+      storageUri: "https://github.com/tduffy000/kfserving-uri-examples/blob/master/sklearn/frozen/model.joblib?raw=true"
+---
+apiVersion: "serving.kubeflow.org/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "sklearn-iris-kf-user-ui"
+  namespace: kubeflow-user
+spec:
+  predictor:
+    sklearn:
+      storageUri: "https://github.com/tduffy000/kfserving-uri-examples/blob/master/sklearn/frozen/model.joblib?raw=true"
+      runtimeVersion: 0.23.1

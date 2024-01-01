@@ -1,0 +1,22 @@
+name: "yolov8n_config_3"
+max_batch_size: 2
+input {
+  name: "images"
+  data_type: TYPE_FP32
+  dims: 3
+  dims: 640
+  dims: 640
+}
+output {
+  name: "output0"
+  data_type: TYPE_FP32
+  dims: -1
+  dims: -1
+}
+instance_group {
+  count: 2
+  kind: KIND_CPU
+}
+dynamic_batching {
+}
+backend: "onnxruntime"
